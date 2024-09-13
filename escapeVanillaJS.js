@@ -22,12 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("solveRoom3").addEventListener("click", () => {
         fetch('directions.json') 
             .then(response => response.json())
-            .then(directions => {
-                navigateLabyrinth(directions)
-                    .then(message => {
-                        // Fixed method to use text content
-                        document.getElementById("room3Result").textContent = message;
-                    });
+            .then(async directions => {
+                const message = await navigateLabyrinth(directions);
+                // Fixed method to use text content
+                document.getElementById("room3Result").textContent = message;
             });
     });
 });
